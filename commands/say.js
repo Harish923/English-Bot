@@ -13,8 +13,15 @@ module.exports = async function say(msg, args) {
             
             if(global.voiceChannel){
                 global.voiceChannel.join().then(connection =>{
-                    connection.play(json[0].phonetics[0].audio);
+                    if(json[0].phonetics[0].audio)
+                        connection.play(json[0].phonetics[0].audio);
 
+                }).catch(err=>{
+                    embed
+                    .setColor('#003366')
+                    .setDescription('Results not found!');
+                    msg.channel.send(embed);
+                    
                 });        
                 
             }else{
