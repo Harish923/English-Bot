@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
 
-module.exports = async function(msg, args) {
+module.exports = async function say(msg, args) {
     const embed = new Discord.MessageEmbed(msg);
     if(args.length > 0) {
         try {
@@ -9,13 +9,14 @@ module.exports = async function(msg, args) {
             let response = await fetch(url);
             let json = await response.json();
 
-
-            let voiceChannel = msg.member.voice.channel;
-
-            if(voiceChannel){
-                voiceChannel.join().then(connection =>{
+            global.voiceChannel = msg.member.voice.channel;
+            
+            if(global.voiceChannel){
+                global.voiceChannel.join().then(connection =>{
                     connection.play(json[0].phonetics[0].audio);
-                });
+
+                });        
+                
             }else{
                 embed
                 .setColor('#003366')
@@ -37,3 +38,4 @@ module.exports = async function(msg, args) {
         msg.channel.send(embed);
     }
 }
+

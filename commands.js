@@ -2,8 +2,9 @@ const meaning = require('./commands/meaning.js');
 const say = require('./commands/say.js');
 const allabout = require('./commands/allabout.js');
 const help = require('./commands/help.js');
+const disconnect = require('./commands/disconnect.js');
 
-const commands = { meaning, say, allabout, help};
+const commands = { meaning, say, allabout, help, disconnect};
 
 module.exports = async function(msg) {
     let messageTokens = msg.content.split(' ');
