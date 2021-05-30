@@ -5,19 +5,19 @@ const Discord = require('discord.js');
 module.exports = async function torrent(msg, args) {
     const embed = new Discord.MessageEmbed(msg);
     if(args.length > 0) {
-        TorrentSearchApi.enableProvider('Rarbg');
+        TorrentSearchApi.enablePublicProviders();
 
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
-        // console.log(torrents);
+        console.log(torrents);
 
         embed
         .setTitle(args.join(" "))
         .setColor('#ff9900');
         let i;
         let text = "";
-        if(torrents.length >= 7){
-            for (i = 0; i <7; i++) {
+        if(torrents.length >= 10){
+            for (i = 0; i <10; i++) {
                 text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
                 
                 let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
