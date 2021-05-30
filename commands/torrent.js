@@ -5,8 +5,7 @@ const Discord = require('discord.js');
 module.exports = async function torrent(msg, args) {
     const embed = new Discord.MessageEmbed(msg);
     if(args.length > 0) {
-        TorrentSearchApi.enablePublicProviders();
-        TorrentSearchApi.disableProvider('Torrent9');
+        TorrentSearchApi.enableProvider('Rarbg');
 
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
@@ -21,10 +20,10 @@ module.exports = async function torrent(msg, args) {
             for (i = 0; i <3; i++) {
                 text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
                 
-                // let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
-                // let json = await response.json();
+                let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
+                let json = await response.json();
                 
-                text += torrents[i].magnet+'\n';
+                text += json.shorturl+'\n';
             }
         }else if(torrents.length > 0){
             for (i = 0; i < torrents.length; i++) {
