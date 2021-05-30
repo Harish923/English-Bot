@@ -16,8 +16,8 @@ module.exports = async function torrent(msg, args) {
         .setColor('#ff9900');
         let i;
         let text = "";
-        if(torrents.length > 5){
-            for (i = 0; i <3; i++) {
+        if(torrents.length >= 7){
+            for (i = 0; i <7; i++) {
                 text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
                 
                 let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
