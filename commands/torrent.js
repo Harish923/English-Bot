@@ -9,7 +9,7 @@ module.exports = async function torrent(msg, args) {
 
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
-        console.log(torrents);
+        // console.log(torrents);
 
         embed
         .setTitle(args.join(" "))
