@@ -9,7 +9,7 @@ module.exports = async function torrent(msg, args) {
 
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
-        console.log(torrents);
+        // console.log(torrents);
 
         embed
         .setTitle(args.join(" "))
@@ -22,8 +22,8 @@ module.exports = async function torrent(msg, args) {
                 
                 let link = torrents[i].link;
                 let arr = link.split('/');
-                
-                let response = await fetch('http://mgnet.me/api/create/?m='+arr[arr.length - 1]);
+
+                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://glotorrents.pw:6969/announce');
                 let json = await response.json();
                 
                 text += json.shorturl+'\n';
