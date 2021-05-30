@@ -11,6 +11,7 @@ module.exports = async function torrent(msg, args) {
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
         // console.log(torrents);
+
         embed
         .setTitle(args.join(" "))
         .setColor('#ff9900');
@@ -20,10 +21,10 @@ module.exports = async function torrent(msg, args) {
             for (i = 0; i <3; i++) {
                 text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
                 
-                let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
-                let json = await response.json();
+                // let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
+                // let json = await response.json();
                 
-                text += json.shorturl;
+                text += torrents[i].magnet+'\n';
             }
         }else if(torrents.length > 0){
             for (i = 0; i < torrents.length; i++) {
