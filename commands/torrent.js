@@ -32,7 +32,10 @@ module.exports = async function torrent(msg, args) {
             for (i = 0; i < torrents.length; i++) {
                 text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
                 
-                let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
+                let link = torrents[i].link;
+                let arr = link.split('/');
+
+                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://glotorrents.pw:6969/announce');
                 let json = await response.json();
                 
                 text += json.shorturl+'\n';
