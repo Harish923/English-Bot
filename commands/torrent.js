@@ -5,11 +5,11 @@ const Discord = require('discord.js');
 module.exports = async function torrent(msg, args) {
     const embed = new Discord.MessageEmbed(msg);
     if(args.length > 0) {
-        TorrentSearchApi.enablePublicProviders();
+        TorrentSearchApi.enableProvider('Rarbg');
 
         // Search '1080' in 'Movies' category and limit to 20 results
         const torrents = await TorrentSearchApi.search(args.join(" "));
-        console.log(torrents);
+        // console.log(torrents);
 
         embed
         .setTitle(args.join(" "))
