@@ -27,7 +27,12 @@ module.exports = async function torrent(msg, args) {
             }
         }else if(torrents.length > 0){
             for (i = 0; i < torrents.length; i++) {
-                text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : '+torrents[i].magnet;
+                text += 'Title : '+torrents[i].title + '\nSize : '+torrents[i].size+'\nLink : ';
+                
+                let response = await fetch('http://mgnet.me/api/create/?m='+torrents[i].magnet);
+                let json = await response.json();
+                
+                text += json.shorturl+'\n';
             }
         }else if(torrents.length == 0){
             text = "No results found!";
