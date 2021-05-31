@@ -23,7 +23,7 @@ module.exports = async function torrent(msg, args) {
                 let link = torrents[i].link;
                 let arr = link.split('/');
 
-                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://glotorrents.pw:6969/announce');
+                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://open.demonii.com:1337/announce&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://glotorrents.pw:6969/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://torrent.gresille.org:80/announce&tr=udp://p4p.arenabg.com:1337&tr=udp://tracker.leechers-paradise.org:6969');
                 let json = await response.json();
                 
                 text += json.shorturl+'\n';
@@ -35,7 +35,7 @@ module.exports = async function torrent(msg, args) {
                 let link = torrents[i].link;
                 let arr = link.split('/');
 
-                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://glotorrents.pw:6969/announce');
+                let response = await fetch('http://mgnet.me/api/create/?m=magnet:?xt=urn:btih:'+arr[arr.length - 1]+'&tr=udp://open.demonii.com:1337/announce&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.coppersurfer.tk:6969&tr=udp://glotorrents.pw:6969/announce&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://torrent.gresille.org:80/announce&tr=udp://p4p.arenabg.com:1337&tr=udp://tracker.leechers-paradise.org:6969');
                 let json = await response.json();
                 
                 text += json.shorturl+'\n';
